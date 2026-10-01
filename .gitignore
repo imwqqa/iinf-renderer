@@ -1,0 +1,8 @@
+.cache/
+__cmake_systeminformation/
+
+CMakeUserPresets.json
+compile_commands.json
+.clangd
+
+build/

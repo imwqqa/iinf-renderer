@@ -1,0 +1,15 @@
+[requires]
+sdl/3.4.14
+imgui/1.92.9b
+glm/1.0.3
+vulkan-loader/1.4.350.0
+vk-bootstrap/1.4.350
+vulkan-memory-allocator/3.3.0
+fastgltf/0.9.0
+
+[generators]
+CMakeDeps
+CMakeToolchain
+
+[layout]
+cmake_layout
