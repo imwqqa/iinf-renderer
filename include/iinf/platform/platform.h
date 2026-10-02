@@ -3,6 +3,6 @@ namespace iinf::platform {
 [[nodiscard]]
 bool Init();
 
-void Quit();
+void Exit();
 
 } // namespace iinf::platform

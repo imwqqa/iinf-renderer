@@ -32,6 +32,6 @@ int main() {
         }
     }
     
-    platform::Quit();
+    platform::Exit();
     return 0;
 }
