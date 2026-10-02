@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstdint>
+
 namespace iinf {
 
 using int8 = std::int8_t;
