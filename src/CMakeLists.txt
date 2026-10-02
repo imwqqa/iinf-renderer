@@ -6,10 +6,13 @@ target_include_directories(iinf-core
         $<INSTALL_INTERFACE:include>
 )
 
+add_subdirectory(platform)
+
 add_executable(iinf-app main.cpp)
 target_link_libraries(iinf-app
     PRIVATE
         iinf-core
+        iinf-platform
         SDL3::SDL3
         imgui::imgui
         Vulkan::Loader
