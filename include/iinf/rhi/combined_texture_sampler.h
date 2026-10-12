@@ -6,8 +6,8 @@
 namespace iinf::rhi {
 
 struct CombinedTextureSampler {
-    const Texture* texture;
-    const Sampler* sampler;
+    Texture* texture;
+    Sampler* sampler;
 };
 
 } // namespace iinf::rhi

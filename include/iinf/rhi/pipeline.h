@@ -38,6 +38,16 @@ enum class FrontFace : uint8 {
     CounterClockWise
 };
 
+struct InputAssemblyState {
+    PrimitiveTopology primitive_topology;
+};
+
+struct RasterizationState {
+    FrontFace front_face;
+    CullMode cull_mode;
+    float line_width = 1.0F;
+};
+
 enum class InputRate : uint8 {
     Undefined = 0,
     PerVertex,
@@ -97,25 +107,25 @@ struct BlendState {
 };
 
 struct GraphicsPipelineCreateInfo {
-    const Shader* vertex_shader;
-    const Shader* fragment_shader;
-    const PipelineLayout* pipeline_layout;
-
-    // rasterization
-    PrimitiveTopology primitive_topology;
-    FrontFace front_face;
-    CullMode cull_mode;
-    float line_width = 1.0F;
+    Shader* vertex_shader;
+    Shader* fragment_shader;
+    PipelineLayout* pipeline_layout;
 
     // vertex input
     std::span<VertexInput> vertex_inputs;
     std::span<VertexAttribute> vertex_attributes;
 
+    // input assembly
+    InputAssemblyState input_assembly_state;
+
+    // rasterization
+    RasterizationState rasterization_state;
+
     // depth and stencil
     DepthStencilState depth_stencil_state;
 
     // blend
-    std::span<BlendState> color_attachment_blends;
+    std::span<BlendState> color_attachment_blend_states;
 
     // dynamic rendering format
     std::span<Format> color_attachment_formats;
@@ -132,6 +142,7 @@ public:
     virtual ~Pipeline() = default;
 
     virtual PipelineType type() const = 0;
+    virtual PipelineLayout& layout() = 0;
 };
 
 } // namespace iinf::rhi

@@ -27,9 +27,9 @@ enum class MipmapMode : uint8 {
 };
 
 struct SamplerCreateInfo {
-    FilterMode min_filter;
-    FilterMode mag_filter;
-    FilterMode mip_filter;
+    Filter min_filter;
+    Filter mag_filter;
+    MipmapFilter mip_filter;
     AddressMode address_mode_u;
     AddressMode address_mode_v;
     AddressMode address_mode_w;

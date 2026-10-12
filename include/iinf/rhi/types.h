@@ -6,9 +6,10 @@ namespace iinf::rhi {
 
 enum class MemoryUsage : uint8 {
     Undefined = 0,
-    GPUOnly,
-    CPUToGPU,
-    GPUToCPU
+    Static,
+    Dynamic,
+    Staging,
+    Readback
 };
 
 enum class TextureUsage : uint8 {
@@ -19,6 +20,18 @@ enum class TextureUsage : uint8 {
     TransferDst = 1 << 3,
     ColorAttachment = 1 << 4,
     DepthStencilAttachment = 1 << 5
+};
+
+enum class TextureLayout : uint8 {
+    Undefined = 0,
+    General,
+    TransferSrc,
+    TransferDst,
+    ColorAttachment,
+    DepthStencilAttachment,
+    DepthStencilReadOnly,
+    ShaderReadOnly,
+    Present
 };
 
 constexpr TextureUsage operator|(TextureUsage left, TextureUsage right) {
@@ -94,7 +107,13 @@ enum class IndexType : uint8 {
     UInt32
 };
 
-enum class FilterMode : uint8 {
+enum class Filter : uint8 {
+    Undefined = 0,
+    Nearest,
+    Linear,
+};
+
+enum class MipmapFilter : uint8 {
     Undefined = 0,
     Nearest,
     Linear,

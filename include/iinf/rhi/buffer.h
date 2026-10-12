@@ -39,8 +39,8 @@ public:
     virtual void* Map() = 0;
     virtual void Unmap() = 0;
 
-    virtual BufferUsage usage() const = 0;
     virtual uint32 size() const = 0;
+    virtual BufferUsage usage() const = 0;
 };
 
 } // namespace iinf::rhi
