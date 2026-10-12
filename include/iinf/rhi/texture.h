@@ -25,10 +25,8 @@ class Texture {
 public:
     virtual ~Texture() = default;
 
-    virtual void* Map(uint32 mip_level, uint32 array_layer) = 0;
-    virtual void Unmap() = 0;
-
     virtual TextureUsage usage() const = 0;
+    virtual TextureLayout layout() const = 0;
     virtual Extent2D extent() const = 0;
     virtual Format format() const = 0;
     virtual uint32 mip_levels() const = 0;

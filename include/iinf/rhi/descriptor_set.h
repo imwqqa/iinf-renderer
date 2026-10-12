@@ -2,7 +2,6 @@
 
 #include <span>
 #include <variant>
-#include <vector>
 
 #include <iinf/core/types.h>
 #include <iinf/rhi/buffer.h>
@@ -14,7 +13,7 @@
 
 namespace iinf::rhi {
 
-using DescriptorData = std::variant<const Sampler*, const Texture*, const CombinedTextureSampler*, const Buffer*>;
+using DescriptorData = std::variant<Sampler*, Texture*, CombinedTextureSampler*, Buffer*>;
 
 struct DescriptorWrite {
     uint32 binding;
