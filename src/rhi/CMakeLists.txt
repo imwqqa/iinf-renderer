@@ -1,0 +1,26 @@
+add_library(iinf-rhi
+    vulkan/render_context.cpp
+    vulkan/swapchain.cpp
+    vulkan/frame_context.cpp
+    vulkan/command_buffer.cpp
+    vulkan/buffer.cpp
+    vulkan/texture.cpp
+    vulkan/sampler.cpp
+    vulkan/pipeline.cpp
+    vulkan/pipeline_layout.cpp
+    vulkan/shader.cpp
+    vulkan/descriptor_pool.cpp
+    vulkan/descriptor_set.cpp
+    vulkan/descriptor_set_layout.cpp
+    vulkan/memory_allocator.cpp
+)
+
+target_link_libraries(iinf-rhi
+    PUBLIC
+        iinf-core
+    PRIVATE
+        Vulkan::Loader
+        vk-bootstrap::vk-bootstrap
+        GPUOpen::VulkanMemoryAllocator
+        imgui::imgui
+)
