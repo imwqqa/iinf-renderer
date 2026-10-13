@@ -1,8 +1,10 @@
+#include <cstring>
 #include <functional>
 #include <memory>
 #include <optional>
 
 #include <SDL3/SDL_events.h>
+#include <SDL3/SDL_properties.h>
 #include <SDL3/SDL_video.h>
 
 #include <iinf/core/types.h>
@@ -23,7 +25,14 @@ std::optional<WindowEvent> ConvertEvent(SDL_Event sdl_event) {
 
 class SDLWindow final : public Window {
 public: 
-    explicit SDLWindow(SDL_Window* handle) : handle_(handle) {}
+    explicit SDLWindow(SDL_Window* handle) : handle_(handle) {
+        SDL_PropertiesID props = SDL_GetWindowProperties(handle_);
+
+        if (std::strcmp(SDL_GetCurrentVideoDriver(), "windows") == 0) {
+            native_handle_.window_handle  = SDL_GetPointerProperty(props, SDL_PROP_WINDOW_WIN32_HWND_POINTER, nullptr);
+            native_handle_.display_handle = SDL_GetPointerProperty(props, SDL_PROP_WINDOW_WIN32_INSTANCE_POINTER, nullptr);
+        }
+    }
 
     ~SDLWindow() override {
         SDL_DestroyWindow(handle_);
