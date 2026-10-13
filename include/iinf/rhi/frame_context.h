@@ -10,8 +10,8 @@ class FrameContext {
 public:
     virtual ~FrameContext() = default;
 
-    virtual CommandBuffer& command_buffer() const = 0;
-    virtual Texture& present_texture() const = 0;
+    virtual CommandBuffer& command_buffer() = 0;
+    virtual Texture& present_texture() = 0;
 };
 
 } // namespace iinf::rhi
