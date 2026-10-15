@@ -7,6 +7,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON) # for language server
 
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    add_compile_options(-gdwarf-4)
+endif()
+
 find_package(SDL3 REQUIRED)
 find_package(imgui REQUIRED)
 find_package(VulkanLoader REQUIRED)
