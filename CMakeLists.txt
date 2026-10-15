@@ -20,3 +20,4 @@ find_package(VulkanMemoryAllocator REQUIRED)
 find_package(fastgltf REQUIRED)
 
 add_subdirectory(src)
+add_subdirectory(glsl)
